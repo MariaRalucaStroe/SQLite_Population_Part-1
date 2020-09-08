@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:\Users\49151\AppData\Local\Temp\Temp1_sql-population-queries-starting.zip\sql-population-queries-starting\db.sqlite" readonly="1" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="968"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,16:mainpopulation_years"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">-- What years are covered by the dataset?
+
+SELECT DISTINCT year from population_years;
+
+-- What is the largest population size for Gabon in this dataset?
+
+SELECT MAX(population) 
+AS Largest_Population_size_Gabon
+FROM population_years
+WHERE country = 'Gabon';
+
+-- What were the 10 lowest population countries in 2005?
+
+SELECT *
+FROM population_years
+WHERE year = 2005
+ORDER BY population
+LIMIT 10;
+
+-- What are all the distinct countries with a population of over 100 million in the year 2010?
+
+SELECT DISTINCT country, population
+FROM population_years
+WHERE year = 2010
+AND population &gt; 100;
+
+-- How many countries in this dataset have the word “Islands” in their name?
+
+SELECT COUNT (country)
+FROM population_years
+WHERE country LIKE '%Islands%';
+
+--What is the difference in population between 2000 and 2010 in Indonesia?
+
+SELECT year, population FROM population_years
+WHERE country = 'Indonesia'
+AND year = 2000
+OR country = 'Indonesia'
+AND year = 2010;</sql><current_tab id="0"/></tab_sql></sqlb_project>
